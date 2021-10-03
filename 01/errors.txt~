@@ -1,0 +1,79 @@
+1) An error occured since the class name is different with its file name.
+   Error message:
+Hi.java:1: error: class hi is public, should be declared in a file named hi.java
+public class hi{
+       ^
+1 error
+
+
+
+2) No error occured because the word changed is in the print statement.
+
+
+
+3) Both the beginning and ending quotation marks must be always present together or else the print statement is not complete. Error message below:
+Hi.java:3: error: ')' expected
+        System.out.println (hello world");
+                                 ^
+Hi.java:3: error: unclosed string literal
+        System.out.println (hello world");
+                                       ^
+Hi.java:3: error: ';' expected
+        System.out.println (hello world");
+                                          ^
+Hi.java:5: error: reached end of file while parsing
+}
+ ^
+4 errors
+
+
+
+4) The print statement is not complete, both quotation marks must be included all the time.
+   Error message:
+Hi.java:3: error: unclosed string literal
+        System.out.println ("hello world);
+                            ^
+Hi.java:3: error: ';' expected
+        System.out.println ("hello world);
+                                          ^
+Hi.java:5: error: reached end of file while parsing
+}
+ ^
+3 errors
+
+
+
+5) The main method is now just a method so program compiles but it cannot run since there is no main method. 
+   Message when it runs:
+
+Error: Main method not found in class Hi, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+
+
+
+6) Cannot compile the program because print statement is not correct. Error message:
+ 
+Hi.java:3: error: cannot find symbol
+        System.out.printline ("hello world");
+                  ^
+  symbol:   method printline(String)
+  location: variable out of type PrintStream
+1 error
+
+7) Program does not compile because every statement in java must always end with a semicolon or else it does not work.
+Error message:
+ Hi.java:3: error: ';' expected
+        System.out.println ("hello world")
+                                            ^
+1 error
+
+
+
+8)The whole program cannot be compiled because it must be always closed with a last brace.
+  Error message:
+Hi.java:4: error: reached end of file while parsing
+            }
+             ^
+1 error

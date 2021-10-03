@@ -1,0 +1,40 @@
+package week09;
+
+/**
+ * Selection sort.
+ *
+ */
+
+public class SelectionSort extends Sorter {
+
+
+    public SelectionSort(Integer[] nums) {
+        super(nums);
+    }
+
+
+    public void sortNums() {
+
+        int index = 0;
+        comparisons = 0;
+        int temp;
+        for (i = 0; i < nums.length; i++) {
+            index = i;
+            for (j = i+1; j < nums.length; j++) {
+                if (++comparisons > 0 && nums[j] < nums[index]) {
+                    index = j;                   
+                }
+                update();
+            }
+
+            temp = nums[index];
+            nums[index] = nums[i];
+            nums[i] = temp;
+            update();
+        }
+        
+        update();
+    }
+        
+
+}

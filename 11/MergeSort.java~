@@ -1,0 +1,73 @@
+package week11;
+
+
+public class MergeSort extends Sorter {
+
+  
+
+    public MergeSort(Integer[] nums) {
+        super(nums);
+       
+    }
+
+    private void mergeSort(int left, int right){
+    
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSort(left, mid);           //recursively call mergeSort on the left subarray
+            mergeSort(mid + 1, right);      //recursively call mergeSort on the right subarray 
+            merge(left, mid + 1, right);    //call merge to merge them together 
+        }
+    }
+
+    private void merge(int left, int mid, int right) {
+        
+        //System.err.println(left + " " + mid + " " + right);
+       int[] temp = new int[nums.length];
+        for (int i=0; i<temp.length; i++) {
+            temp[i] = nums[i];
+  
+        }
+
+        i = left;
+        j = left;
+        int k = mid;
+
+        while (++comparisons>0 &&(i < mid) && (k <= right)) {
+            if (temp[i] < temp[k]) {
+                nums[j++] = temp[i++];
+            } else {
+                nums[j++] = temp[k++];
+            }
+            update();
+        }
+
+        while (++comparisons>0 && i < mid) {
+            nums[j++] = temp[i++];
+            update();
+        }
+
+        while (++comparisons>0 && j <= right) {
+            nums[j++] = temp[k++];
+            update();
+        }
+    }
+        
+
+
+
+    public void sortNums() {
+        mergeSort(0, nums.length - 1);
+    }
+
+
+}
+
+
+        
+
+
+
+        
+        
+        

@@ -1,0 +1,148 @@
+package week10;
+
+import java.util.*;
+
+public class EP implements ExamPile {
+  
+    private ArrayList<Integer> exams = new ArrayList<>();
+   
+      
+  
+    public void load(int[] items) {
+        for (int i: items) {
+            exams.add(i);
+        } 
+    }
+  
+  
+    public int size() {
+        return exams.size();
+    }
+
+    
+    public int peek() {
+        try {
+            
+            if (exams.isEmpty())
+                throw new EmptyPileException("ArrayList is empty");
+            
+         
+        } catch (EmptyPileException ex) {
+            System.out.println(ex);
+        }
+        
+        return exams.get(0);
+     
+    }
+  
+    public int mark() {
+      
+        try {
+            
+            if (exams.isEmpty()) {
+                throw new EmptyPileException("ArrayList is empty");
+            } 
+            
+        } catch (EmptyPileException ex) {
+            System.out.println(ex);
+        }
+       
+        int top = exams.get(0);
+        exams.remove(0);
+        return top;
+       
+      
+    }
+  
+  
+    public void delay() {
+        try {
+            
+            if (exams.isEmpty()) {
+                throw new EmptyPileException("ArrayList is empty");
+            }
+               
+      
+        } catch (EmptyPileException ex) {
+            System.out.println(ex);
+        }
+        
+        int item = exams.get(0);
+        exams.add(item);
+        exams.remove(0);
+
+        
+    }
+
+    public String toString() {
+        String newString ="";
+        for (Integer item: exams) {
+            newString = newString + Integer.toString(item) + " ";
+        }
+        return newString.trim();
+    }
+
+
+    public String sortingSteps() {
+        
+        String newString = "";
+        int j = 0;
+        int size = exams.size();
+
+        while (j < size) {
+            if (j == exams.get(0)) {
+                newString = newString + 'M';
+                exams.remove(0);
+            } else {
+                newString = newString + 'D';
+                int item = exams.get(0);
+                exams.add(item);
+                exams.remove(0);
+                j--;
+            }
+
+            j++;
+              
+        } 
+
+        return newString;
+        
+    }
+
+
+    public static EP reconstruct(String steps) {
+       EP pile = new EP();
+       int count = 0;
+
+        for (int i=0; i<steps.length(); i++) {
+            if (steps.charAt(i) == 'M') {
+                pile.exams.add(count);
+                count++;
+            }
+        }
+
+        for (int i=steps.length()-1; i>0; i--) {
+            if (steps.charAt(i) == 'M') {
+                pile.exams.add(0, count-1);
+            } else {
+                pile.exams.remove(0);
+                int item = pile.exams.get(0);
+                pile.exams.add(item);
+            }
+        }
+
+        return pile;
+
+           
+
+        
+    }
+
+ 
+    
+    
+
+    
+
+    
+}

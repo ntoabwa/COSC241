@@ -1,0 +1,42 @@
+package week03;
+/**
+ * Class with recursive methods which repeats themselves until they reach
+ * a base value where they stop.
+ */
+
+public class RecursiveApp{
+
+    /**
+     * Receives a long as input then count and return the number of digits it contains.
+     * method is repeated with a new long value everytime by dividing
+     * the current value with 10
+     *@return the number of digits in a long
+     */
+    public long digits(long n){
+        
+        if(n<10){
+            return 1;
+         }
+        return 1+digits(n/10); 
+    }
+
+    /**
+     *Calculate and return the sum of digits a long contains.
+     *Sum is calculated by adding the remainder of the long after division by 10.
+     *Then method is repeated with a new long value by dividing the current value with 10
+     *@return the sum of digits in the long input.
+     */
+    public long sumOfDigits(long n){
+        if(Math.abs(n)<10){
+            return n;
+        }
+        
+        return (n%10) + sumOfDigits(n/10);
+ 
+    }
+
+    
+    
+
+    
+}

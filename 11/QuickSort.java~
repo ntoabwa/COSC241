@@ -1,0 +1,78 @@
+package week11;
+
+
+public class QuickSort extends Sorter {
+
+
+
+    public QuickSort(Integer[] nums) {
+        super(nums);
+    }
+
+    private void quickSort(int left, int right){
+
+        if (left < right) {
+          int p = partition(left, right);
+            quickSort(left, p);
+            quickSort(p+1, right);
+        }
+
+    }
+
+    private int partition(int left, int right) {
+
+        int pivot = nums[left];
+        int hole = left;
+        i = left + 1;
+        j = right;
+
+        while (true) {
+            
+            while ((++comparisons>0) && (j > hole) && (nums[j] >= pivot)) {
+                j--;
+            }
+            update();
+            
+            if (j == hole) {
+                break;
+            }
+            update();
+            
+            nums[hole] = nums[j];
+            hole = j;
+        
+
+            while ((++comparisons>0) && (i < hole) && (nums[i] < pivot)) {
+                i++;
+            } update();
+        
+            if (i == hole) {
+                break;
+            }
+
+            nums[hole] = nums[i];
+            hole = i;
+        }
+        
+            nums[hole] = pivot;
+            return hole;
+        
+    
+    }
+
+    public void sortNums() {
+        quickSort(0, nums.length - 1);
+    }
+    
+}
+
+    
+               
+
+
+
+
+
+        
+            
+        
